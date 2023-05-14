@@ -4,6 +4,9 @@ import AuthContext from "./authContext";
 
 export default function Home() {
   const session = useSession();
+  const login = async ()=>{
+    await signIn('github', {redirect: false})
+  }
   return (
     <AuthContext>
     <div className='flex justify-center items-center flex-col mt-6'>
@@ -20,7 +23,7 @@ export default function Home() {
           </>
         )
         :
-        <span className='cursor-pointer mr-4' onClick={()=>signIn('github', {redirect: false})}> Login Github</span>
+        <span className='cursor-pointer mr-4' onClick={()=>{login()}}> Login Github</span>
       }
     </div>
     </AuthContext>
