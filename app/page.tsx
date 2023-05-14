@@ -20,7 +20,7 @@ export default function Home() {
           </>
         )
         :
-        <span className='cursor-pointer mr-4' onClick={()=>signIn('github')}> Login Github</span>
+        <span className='cursor-pointer mr-4' onClick={()=>signIn('github', {redirect: false})}> Login Github</span>
       }
     </div>
     </AuthContext>
