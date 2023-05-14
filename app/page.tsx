@@ -1,6 +1,6 @@
 "use client"
 import { signIn, signOut, useSession } from 'next-auth/react';
-import AuthContext from "./authContext";
+
 import router from 'next/router';
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
 
   }
   return (
-    <AuthContext>
+    
     <div className='flex justify-center items-center flex-col mt-6'>
       {
         session?.data 
@@ -34,9 +34,8 @@ export default function Home() {
           </>
         )
         :
-        <span className='cursor-pointer mr-4' onClick={()=>{login()}}> Login Github</span>
+        <span className='cursor-pointer mr-4' onClick={()=>{ signIn('github')}}> Login Github</span>
       }
     </div>
-    </AuthContext>
   )
 }
