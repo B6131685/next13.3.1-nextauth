@@ -1,11 +1,22 @@
 "use client"
 import { signIn, signOut, useSession } from 'next-auth/react';
 import AuthContext from "./authContext";
+import router from 'next/router';
 
 export default function Home() {
   const session = useSession();
-  const login = async ()=>{
-    await signIn('github', {redirect: false})
+  const login = ()=>{
+     signIn('github', {redirect: false})
+    .then((callback) => {
+      if (callback?.error) {
+        alert('Invalid credentials!');
+      }
+
+      if (callback?.ok) {
+        router.push('/')
+      }
+    })
+
   }
   return (
     <AuthContext>
